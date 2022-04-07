@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const apiRoutes = require('./routes/api');
 const { idValidator, priceValidator, propertyValidator } = require('./middlewares/requestValidator');
@@ -9,6 +10,7 @@ mongoose.connect('mongodb+srv://diplomatura:software@cluster0.xvb0v.mongodb.net/
 mongoose.Promise = global.Promise;
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/api', priceValidator);
 app.use('/api', propertyValidator);
